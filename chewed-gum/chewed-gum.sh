@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BASE_DIR=$(dirname "$(realpath "$0")")/scripts
+echo $BASE_DIR
 
 # Function to display available directories
 list_dirs() {
