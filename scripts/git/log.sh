@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Define the repository path
 REPO_PATH=${1:-"."}
 unicode_char=$(printf '\u203A')
 
@@ -23,13 +22,12 @@ display_git_log() {
     # Display the selected entry in detail
     if [[ -n "$selected_entry" ]]; then
         commit_hash=$(echo "$selected_entry" | awk '{print $1}')
-        # Prompt for file selection
+
         files=$(git show --name-only --pretty=format: "$commit_hash")
         files_list=$(echo -e "$files\nExit")
 
         selected_files=$(printf "%s\n" "$files_list" | gum choose --header "Select a file" --cursor "${unicode_char} ")
 
-        # Display the selected files
         for file in $selected_files; do
             echo "Selected file: $file"
             if [[ "$file" == "Exit" ]]; then
