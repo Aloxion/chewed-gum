@@ -35,9 +35,21 @@ chewed_gum_main() {
         # List available scripts
         scripts=$(list_scripts "$selected_dir")
         scripts_list=$(printf "%s\n" "$scripts")
+
+        # Replace all _ with space
+        scripts_list=$(echo "$scripts_list" | sed 's/_/ /g')
+
+        scripts_list=$(echo "$scripts_list" | sed 's/.sh//g')
+        
+        # Uppercase first letter
+        scripts_list=$(echo "$scripts_list" | sed 's/\b\(.\)/\u\1/g')
+
         # Use gum to select a script
         selected_script=$(echo "$scripts_list" | gum choose --header "Select a script to run")
-
+        # Lowercase each first letter
+        selected_script=$(echo "$selected_script" | sed 's/\b\(.\)/\l\1/g')
+        selected_script=$(echo "$selected_script" | sed 's/ /_/g')
+        selected_script="$selected_script.sh"
         # If a script is selected, prompt for arguments and run it
         if [[ -n "$selected_script" ]]; then
             run_script "$selected_dir" "$selected_script" $args

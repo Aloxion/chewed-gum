@@ -28,5 +28,4 @@ tag_name=$(prompt_for_input "Enter the release tag name (e.g., v1.0.0):")
 # Prompt for release notes
 release_notes=$(prompt_for_input "Enter the release notes:")
 
-# Call the function to create the GitHub release
 create_github_release "$tag_name" "$release_notes"

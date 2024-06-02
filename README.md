@@ -4,9 +4,11 @@ An executable customized tool, that uses gum. Includes scripts for github, for u
 
 # Install Using CURL
 
-To use this tool, you need gum.
+To use this tool, you need:
 
 * Gum by [charm.sh](https://charm.sh/)
+* Git
+* gh cli
 
 ## Gum
 
@@ -17,6 +19,16 @@ You can install gum by using homebrew.
 ```
 brew install gum
 ```
+
+## git
+
+```
+sudo apt-get install git
+```
+
+## gh cli
+
+https://github.com/cli/cli
 
 ## Tool - Chewed gum
 
